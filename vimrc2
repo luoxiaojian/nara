@@ -1,0 +1,100 @@
+execute pathogen#infect()
+
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/nerdtree'
+"Plugin 'fholgado/minibufexpl.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'kien/ctrlp.vim'
+"Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'easymotion/vim-easymotion'
+
+call vundle#end()
+
+let g:tagbar_ctags_bin='ctags'
+let g:tagbar_width=30
+
+let NERDTreeWinPos='left'
+let NERDTreeWinSize=30
+nmap <F8> :TagbarToggle<CR> :NERDTreeToggle<CR>
+
+"let g:miniBufExplMapWindowNavVim=1
+"let g:miniBufExplMapWindowNavArrows=1
+"let g:miniBufExplMapCTabSwitchBufs=1
+"let g:miniBufExplModSelTarget=1
+"let g:miniBufExplMoreThanOne=0
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticsStatuslineFlag()}
+set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list=1
+"let g:syntastic_auto_loc_list=1
+"let g:syntastic_check_on_open=1
+"let g:syntastic_check_on_wq=0
+
+let g:ycm_global_ycm_extra_conf="~/.vim/.ycm_extra_conf.py"
+let g:ycm_key_list_select_completion=['<C-u>']
+let g:ycm_key_list_previous_completion=['<C-i>']
+let g:ycm_add_preview_to_completeopt=0
+set completeopt-=preview
+
+let mapleader=","
+map <Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader>l <Plug>(easymotion-overwin-line)
+
+map <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+map <F9> :MBEbp<CR>
+map <F10> :MBEbn<CR>
+
+set laststatus=2
+
+set backspace=indent,eol,start
+
+inoremap jk <ESC>
+imap <c-h> <Left>
+imap <c-l> <Right>
+imap <c-j> <Down>
+imap <c-k> <Up>
+imap <c-d> <Del>
+imap <c-o> <End><CR>
+
+imap ()<space> ()<space>
+imap (); ();
+imap ()<CR> ()<CR>
+imap []<space> []<space>
+imap [] []<Left>
+imap () ()<Left>
+imap <> <><Left>
+imap "" ""<Left>
+
+syntax on
+set nocompatible
+
+set autoindent
+set cindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
+set smarttab
+set number
+
+set history=1000
+set nobackup
+set noswapfile
+
+filetype on
+filetype plugin on
+filetype indent on
+
+set scrolloff=5
+
+set background=dark
+colorscheme solarized
